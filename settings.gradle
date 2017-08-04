@@ -1,0 +1,2 @@
+include 'kotx-core'
+include 'kotx-vue-plugin'
