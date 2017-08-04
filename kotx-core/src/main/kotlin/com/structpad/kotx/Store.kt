@@ -41,10 +41,15 @@ open class Store<S>(var state: S) {
         getters.put(G::class, getter as GetterFunc<S, Any>)
     }
 
-    inline fun <reified M : Mutation> subscribe(noinline handler: SubscriptionHandler<S, M>) {
+    inline fun <reified M : Mutation> subscribe(noinline handler: SubscriptionHandler<S, M>): Int {
         @Suppress("UNCHECKED_CAST")
         subscribers[M::class]?.add(handler as SubscriptionHandler<S, Mutation>) ?:
                 subscribers.put(M::class, mutableListOf(handler as SubscriptionHandler<S, Mutation>))
+        return handler.hashCode()
+    }
+
+    inline fun <reified M : Mutation> unsubscribe(handlerHashCode: Int) {
+        subscribers[M::class]?.removeIf { it.hashCode() == handlerHashCode }
     }
 
     inner class ActionContext {

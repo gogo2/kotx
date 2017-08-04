@@ -1,4 +1,9 @@
-package com.structpad.kotx
+package com.structpad.kotx.example
+
+import com.structpad.kotx.Action
+import com.structpad.kotx.Getter
+import com.structpad.kotx.Mutation
+import com.structpad.kotx.Store
 
 class State {
     var i: Int = 2
@@ -16,18 +21,15 @@ data class DD(val p: Int) : Action
 
 object gg : Getter
 
+
 fun main(args: Array<String>) {
     val store = Store(State())
     store.registerGetter<gg, Int> { state -> state.i }
-    val dd = DD(4)
     store.registerAction<DD>({ context, (p) ->
-        println(context.get<Int>(gg))
         context.commit(TT(p * context.state.j))
-        println(context.get<Int>(gg))
     })
 
     store.registerMutation<TT>({ state, (p) ->
-
         state.i *= p
         state
     })
@@ -39,19 +41,16 @@ fun main(args: Array<String>) {
         state
     })
 
-    store.dispatch(dd)
 
-
-    val k: Int = store.get(gg)
-
-    println(k)
-
-    println(store.state.i)
-    println(store.state.j)
-    store.commit(TT2)
-
-    println(store.state.i)
-    println(store.state.j)
+    val subh = store.subscribe<TT>({ (p), _ -> println("sub$p") })
+    val subh2 = store.subscribe<TT>({ (p), _ -> println("sub$p") })
+    println(subh)
+    println(subh2)
+    store.dispatch(DD(2))
+    store.dispatch(DD(2))
+    store.unsubscribe<TT>(subh)
+    store.unsubscribe<TT>(subh)
+    store.dispatch(DD(3))
 
 
 }

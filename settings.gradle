@@ -1,2 +1,4 @@
 include 'kotx-core'
 include 'kotx-vue-plugin'
+include 'example'
+
