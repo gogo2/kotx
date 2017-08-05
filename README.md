@@ -2,8 +2,7 @@
 Kotx is a state management container with some tools. Concept is based on Vuex state manegement tools for Vue.js framework.
 Some implementation ideas are influenced by [bansa](https://github.com/brianegan/bansa) similar tool, but based on Redux
 
-
-##Usage
+## Usage
 
 ### Design your state and create a Store
 You can define you own state class 
@@ -23,7 +22,7 @@ val store = Store(0)
 ...
 
 
-##TODO
+## TODO
 
 * Vue.js plugin
 * devtools
