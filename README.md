@@ -4,7 +4,6 @@ Some implementation ideas are influenced by [bansa](https://github.com/brianegan
 
 ## Why to use state container?
 ...
-
 ##Usage
 ### Create a Store
 ...
@@ -14,7 +13,7 @@ Some implementation ideas are influenced by [bansa](https://github.com/brianegan
 ...
 ### Subscribe
 ...
-
 ##TODO
 * Vue.js plugin
 * devtools
+* example

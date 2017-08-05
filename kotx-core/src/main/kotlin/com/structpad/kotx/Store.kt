@@ -23,7 +23,7 @@ open class Store<S>(var state: S) {
 
     fun <R> get(getter: Getter): R {
         @Suppress("UNCHECKED_CAST")
-        return getters[getter::class]?.invoke(state) as R
+        return getters[getter::class]?.invoke(state, this::get) as R
     }
 
     inline fun <reified A : Action> registerAction(noinline actionHandler: ActionHandler<ActionContext, A>) {

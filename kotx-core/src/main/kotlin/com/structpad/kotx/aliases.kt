@@ -11,5 +11,5 @@ typealias GettersMap<S> = MutableMap<KClass<*>, GetterFunc<S, Any>>
 typealias MutationHandler<S, M> = (S, M) -> S?
 typealias ActionHandler<C, A> = (C, A) -> Unit
 typealias SubscriptionHandler<S, M> = (M, S) -> Unit
-typealias GetterFunc<S, R> = (S) -> R
+typealias GetterFunc<S, R> = (S, (Getter) -> R) -> R
 

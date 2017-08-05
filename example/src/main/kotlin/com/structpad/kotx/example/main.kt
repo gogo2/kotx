@@ -20,11 +20,12 @@ object TT2 : Mutation {
 data class DD(val p: Int) : Action
 
 object gg : Getter
-
+object g2 : Getter
 
 fun main(args: Array<String>) {
     val store = Store(State())
-    store.registerGetter<gg, Int> { state -> state.i }
+    store.registerGetter<gg, Int> { state, get -> state.i }
+    store.registerGetter<g2, Int> { state, get -> get(gg) }
     store.registerAction<DD>({ context, (p) ->
         context.commit(TT(p * context.state.j))
     })
@@ -51,6 +52,9 @@ fun main(args: Array<String>) {
     store.unsubscribe<TT>(subh)
     store.unsubscribe<TT>(subh)
     store.dispatch(DD(3))
+    println(store.get<Int>(gg))
+    val ffff: Int = store.get(g2)
+    println(ffff)
 
 
 }
