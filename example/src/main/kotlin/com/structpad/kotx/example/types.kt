@@ -12,6 +12,6 @@ object updateIfDiffWeekday : Action
 data class SetDate(val date: Date) : Mutation
 data class SetUsername(val newName: String) : Mutation
 
-object getUsername : Getter
-object getDate : Getter
-object getStatus : Getter
+object loggedUsername : Getter
+object lastDate : Getter
+object appStatus : Getter

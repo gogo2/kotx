@@ -16,7 +16,7 @@ class App(val username: String) {
     }
 
     fun printStatus() {
-        println(store.get<String>(getStatus))
+        println(store.get<String>(appStatus))
     }
 
     fun refresh() {
@@ -35,7 +35,7 @@ class App(val username: String) {
             val cal = Calendar.getInstance()
             val current = cal.get(Calendar.DAY_OF_WEEK)
             val inStoreDate: Date = context.state.date
-            //or context.get(getDate)
+            //or context.get(lastDate)
             cal.time = inStoreDate
             val inStore = cal.get(Calendar.DAY_OF_WEEK)
             if (current != inStore)
@@ -57,10 +57,10 @@ class App(val username: String) {
     }
 
     private fun registerGetters() {
-        store.registerGetter<getDate, Date>({ state, _ -> state.date })
-        store.registerGetter<getUsername, String>({ state, _ -> state.username })
-        store.registerGetter<getStatus, String>({ state, get ->
-            "${get(getUsername)} updated date ${state.updates} times \n last date: ${state.date}"
+        store.registerGetter<lastDate, Date>({ state, _ -> state.date })
+        store.registerGetter<loggedUsername, String>({ state, _ -> state.username })
+        store.registerGetter<appStatus, String>({ state, get ->
+            "${get(loggedUsername)} updated date ${state.updates} times \n last date: ${state.date}"
         })
     }
 
