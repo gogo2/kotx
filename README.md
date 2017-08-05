@@ -62,13 +62,13 @@ context.commit(SetDate(date))
 
 store.get(lastDate)
 ```
-Take a look on my [example](example)
 ### Subscribe
 Function passed to `subscribe` function will be called every time when mutation given by generic parameter is commited.
 ```kotlin
 store.subscribe<SetDate>({ _, _ -> printStatus() })
 ```
 
+Take a look on my [example](example)
 
 ## TODO
 
