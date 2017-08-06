@@ -9,7 +9,7 @@ Some implementation ideas are influenced by [bansa](https://github.com/brianegan
 * To get data from state access it directly or use getters
 * ...
 
-To get a bette feel about kotx visit Vuex's [website](https://vuex.vuejs.org/en/)
+To get a better feel about kotx visit Vuex's [website](https://vuex.vuejs.org/en/)
 
 ## Usage
 
@@ -68,7 +68,7 @@ Function passed to `subscribe` function will be called every time when mutation 
 store.subscribe<SetDate>({ _, _ -> printStatus() })
 ```
 
-Take a look on my [example](example)
+Take a look at my [example](example)
 
 ## TODO
 
